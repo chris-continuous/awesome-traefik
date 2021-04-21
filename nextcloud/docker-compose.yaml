@@ -8,9 +8,9 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_HOST: ${DB_HOST}
-      MYSQL_DATABASE_FILE: '/run/secrets/mysql-database'
-      MYSQL_USER_FILE: '/run/secrets/mysql-user'
-      MYSQL_PASSWORD_FILE: '/run/secrets/mysql-password'
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
       NEXTCLOUD_ADMIN_PASSWORD: ${NEXTCLOUD_ADMIN_PASSWORD}
       NEXTCLOUD_ADMIN_USER: ${NEXTCLOUD_ADMIN_USER}
       NEXTCLOUD_TRUSTED_DOMAINS: ${NEXTCLOUD_URL}
@@ -37,12 +37,3 @@ networks:
 
   lan:
 
-secrets:
-  mysql-user:
-    file: ./secrets/mysql-user.txt
-
-  mysql-database:
-    file: ./secrets/mysql-database.txt
-
-  mysql-password:
-    file: ./secrets/mysql-password.txt
