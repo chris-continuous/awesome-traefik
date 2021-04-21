@@ -1,0 +1,43 @@
+[http]
+
+        [http.routers]
+
+                [http.routers.n1]
+
+                        entryPoints = ["unsecure"]
+
+                        rule = "PathPrefix(`/n1/`)"
+
+                        service = "n1"
+
+                [http.routers.n2]
+
+                        entryPoints = ["unsecure"]
+
+                        rule = "PathPrefix(`/n2/`)"
+
+                        service = "n2"
+
+        [http.services]
+
+                [http.services.n1.loadBalancer]
+
+                        [[http.services.n1.loadBalancer.servers]]
+
+                                url = "http://n1.fritz.box:8080/"
+
+                [http.services.n2.loadBalancer]
+
+                        [[http.services.n2.loadBalancer.servers]]
+
+                                url = "http://n2.fritz.box:8080/"
+
+        [http.middlewares]
+
+                [http.middlewares.n1.stripPrefix]
+
+                        prefixes = ["/n1/"]
+
+                [http.middlewares.n2.stripPrefix]
+
+                        prefixes = ["/n2/"]

@@ -2,7 +2,8 @@ version: '3.7'
 services:
 
   nextcloud:
-    image: nextcloud:18
+    build: ./custom-image
+    restart: unless-stopped
     environment:
       MYSQL_HOST: ${DB_HOST}
       MYSQL_DATABASE: ${DB_NAME}
@@ -11,17 +12,21 @@ services:
       NEXTCLOUD_ADMIN_PASSWORD: ${NEXTCLOUD_ADMIN_PASSWORD}
       NEXTCLOUD_ADMIN_USER: ${NEXTCLOUD_ADMIN_USER}
       NEXTCLOUD_TRUSTED_DOMAINS: ${NEXTCLOUD_URL}
+      INSTANCE_PATH: ${NEXTCLOUD_INSTANCE_PATH}
     networks:
       - lan
       - traefik_web
     volumes:
       - ./app/${STACK}/html:/var/www/html
     labels:
-      traefik.enable: true
-      traefik.docker.network: traefik_web
-      traefik.http.routers.nextcloud.entrypoints: web
-      traefik.http.routers.nextcloud.rule: 'Host(`${NEXTCLOUD_URL}`)'
-      traefik.http.services.nextcloud.loadbalancer.server.port: 80
+      - "traefik.enable='true'"
+      - "traefik.docker.network=traefik_web"
+      - "traefik.http.routers.nextcloud${STACK}.entrypoints=web"
+      - "traefik.http.routers.nextcloud${STACK}.rule='Host(`${NEXTCLOUD_URL}`)'"
+      - "traefik.http.services.nextcloud${STACK}.loadbalancer.server.port=80"
+      - "traefik.http.middlewares.nextcloud${STACK}.stripprefix.prefixes=/nextcloud${STACK}"
+      - "traefik.http.middlewares.nextcloud${STACK}.stripprefix.forceslash=false"
+      - "traefik.http.routers.nextcloud${STACK}.middlewares=nextcloud${STACK}"
       
 
 networks:
