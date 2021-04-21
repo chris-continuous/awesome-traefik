@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-docker build -t elisabeth-nextcloud:latest ./nextcloud/custom-image
-
 export DB_HOST=10.10.1.185
 export STACK=1
 export DB_NAME=nextcloud_cbet

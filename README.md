@@ -1,4 +1,48 @@
 # Awesome Traefik
+
+## INSTALLATION MULTI INSTANCE NEXTCLOUD
+
+You must actually deploy it in a swarm cluster with managers.  
+
+```
+docker swarm init
+# and play command in outputs if you need more nodes
+
+```
+to deploy, first build your custom image.  
+  
+```bash
+docker build -t <you name>-nextcloud:latest ./nextcloud/custom-image
+```
+
+Launch traefik stack.  
+  
+```bash
+docker stack deploy -c trafik/docker-compose.yaml <your stack name>
+```
+
+to deploy stacks complete deploy.sh.    
+for each nextcloud you want to deploy duplicate this piece of code:  
+
+```
+export DB_HOST=<localhost or ip >
+export STACK=<stack number or shortname>
+export DB_NAME=mydb
+export DB_USER=myuser
+export DB_PASSWORD=12345
+export NEXTCLOUD_URL=<main domain name>
+export NEXTCLOUD_ADMIN_USER=admin
+export NEXTCLOUD_ADMIN_PASSWORD=mypassword
+export STACK_NAME=<unique stack name>
+export NEXTCLOUD_INSTANCE_PATH=<path to route traefik on the right instance>
+
+docker stack deploy -c ./nextcloud/docker-compose.yaml $STACK_NAME
+```
+  
+finally on your manager execute you deploy.sh.  
+  
+## ORIGINAL READ ME
+
 Welcome to Awesome Traefik, a collection of contributions around Traefik and Docker/Docker-Compose.
 
 These samples provide a starting point for how to integrate different services using a Compose file and to manage their deployment with Docker Compose and Traefik.
