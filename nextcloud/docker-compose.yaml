@@ -2,7 +2,7 @@ version: '3.7'
 services:
 
   nextcloud:
-    build: ./custom-image
+    image: elisabeth-nextcloud:latest
     restart: unless-stopped
     environment:
       MYSQL_HOST: ${DB_HOST}
