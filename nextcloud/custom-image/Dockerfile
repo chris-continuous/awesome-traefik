@@ -1,3 +1,3 @@
 FROM nextcloud:20
 
-COPY files/config.php /var/www/html/config/config.php
+COPY files/config.php /usr/src/nextcloud/config/config.php

@@ -3,7 +3,6 @@ services:
 
   nextcloud:
     image: elisabeth-nextcloud:latest
-    restart: unless-stopped
     environment:
       MYSQL_HOST: ${DB_HOST}
       MYSQL_DATABASE: ${DB_NAME}
@@ -17,12 +16,12 @@ services:
       - lan
       - traefik_web
     volumes:
-      - ./app/${STACK}/html:/var/www/html
+      - /app/${STACK}/html:/var/www/html
     labels:
-      - "traefik.enable='true'"
+      - "traefik.enable=true"
       - "traefik.docker.network=traefik_web"
       - "traefik.http.routers.nextcloud${STACK}.entrypoints=web"
-      - "traefik.http.routers.nextcloud${STACK}.rule='Host(`${NEXTCLOUD_URL}`)'"
+      - "traefik.http.routers.nextcloud${STACK}.rule=PathPrefix(`/${NEXTCLOUD_INSTANCE_PATH}`)"
       - "traefik.http.services.nextcloud${STACK}.loadbalancer.server.port=80"
       - "traefik.http.middlewares.nextcloud${STACK}.stripprefix.prefixes=/nextcloud${STACK}"
       - "traefik.http.middlewares.nextcloud${STACK}.stripprefix.forceslash=false"
