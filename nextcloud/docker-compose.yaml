@@ -2,10 +2,7 @@ version: '3.7'
 services:
 
   nextcloud:
-    container_name: "nextcloud${STACK}"
-    hostname: nextcloud${STACK}
     image: nextcloud:18
-    restart: unless-stopped
     environment:
       MYSQL_HOST: ${DB_HOST}
       MYSQL_DATABASE: ${DB_NAME}
