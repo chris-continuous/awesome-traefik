@@ -25,7 +25,7 @@ services:
       - "traefik.http.services.nextcloud${STACK}.loadbalancer.server.port=80"
       - "traefik.http.middlewares.nextcloud${STACK}.stripprefix.prefixes=/${NEXTCLOUD_INSTANCE_PATH}"
       - "traefik.http.middlewares.nextcloud${STACK}.stripprefix.forceslash=false"
-      - "traefik.http.routers.nextcloud${STACK}.middlewares=${NEXTCLOUD_INSTANCE_PATH}"
+      - "traefik.http.routers.nextcloud${STACK}.middlewares=nextcloud${STACK}"
       
 
 networks:
