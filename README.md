@@ -9,11 +9,6 @@ docker swarm init
 # and play command in outputs if you need more nodes
 
 ```
-to deploy, first build your custom image.  
-  
-```bash
-docker build -t <you name>-nextcloud:latest ./nextcloud/custom-image
-```
 
 Launch traefik stack.  
   
@@ -35,7 +30,9 @@ export NEXTCLOUD_ADMIN_USER=admin
 export NEXTCLOUD_ADMIN_PASSWORD=mypassword
 export STACK_NAME=<unique stack name>
 export NEXTCLOUD_INSTANCE_PATH=<path to route traefik on the right instance>
+export IMAGE_VERSION=<image version to build and use>
 
+docker build -t <name>-nextcloud:$IMAGE_VERSION ./nextcloud/custom-image
 docker stack deploy -c ./nextcloud/docker-compose.yaml $STACK_NAME
 ```
   
