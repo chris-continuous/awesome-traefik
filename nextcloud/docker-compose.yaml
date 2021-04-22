@@ -20,7 +20,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_web"
-      - "traefik.http.routers.nextcloud${STACK}.entrypoints=web"
+      - "traefik.http.routers.nextcloud${STACK}.entrypoints=websecure"
       - "traefik.http.routers.nextcloud${STACK}.rule=Host(`${NEXTCLOUD_URL}`) && PathPrefix(`/${NEXTCLOUD_INSTANCE_PATH}`)"
       - "traefik.http.services.nextcloud${STACK}.loadbalancer.server.port=80"
       - "traefik.http.middlewares.nextcloud${STACK}.stripprefix.prefixes=/${NEXTCLOUD_INSTANCE_PATH}"
