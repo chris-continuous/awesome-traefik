@@ -3,7 +3,7 @@ http:
   middlewares:
   
     CbetMiddleware:
-      stripprefix:
+      stripPrefix:
         prefixes:
           - "/demo"
         forceslash: false
