@@ -16,7 +16,7 @@ build your image locally:
 docker build -t <name>-nextcloud:$IMAGE_VERSION ./nextcloud/custom-image
 ```
   
-OR install your own private registry : [a link](https://phoenixnap.com/kb/set-up-a-private-docker-registry)  
+OR install your own private registry : [doc here](https://phoenixnap.com/kb/set-up-a-private-docker-registry){:target="_blank"}   
 exemple files are in registry directory.  
 
 build image on an other host and push it  
