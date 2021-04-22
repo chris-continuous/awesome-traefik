@@ -3,9 +3,9 @@ http:
     router_cbet_path:
       entryPoints: 
         - web
-      rule: Host("cbet.training01.continuous.team") && PathPrefix("/demo")
+      rule: "Host(`cbet.training01.continuous.team`) && PathPrefix(`/demo`)"
       service: servicecbet
-      priority: 20
+      priority: 40
       middlewares:
         - CbetMiddleware
   
@@ -14,7 +14,7 @@ http:
         - web
       rule: Host("cbet.training01.continuous.team")
       service: servicecbet
-      priority: 40
+      priority: 20
       
     routerrbet:
       entryPoints: 
