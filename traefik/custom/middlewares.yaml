@@ -6,7 +6,7 @@ http:
       stripPrefix:
         prefixes:
           - "/demo"
-        forceslash: false
+        forceSlash: false
         
     SecHeaders:
       headers:
