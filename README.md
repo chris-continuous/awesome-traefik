@@ -10,6 +10,24 @@ docker swarm init
 
 ```
 
+build your image locally:  
+  
+```
+docker build -t <name>-nextcloud:$IMAGE_VERSION ./nextcloud/custom-image
+```
+  
+OR install your own private registry : [a link](https://phoenixnap.com/kb/set-up-a-private-docker-registry)  
+exemple files are in registry directory.  
+
+build image on an other host and push it  
+
+```
+docker build -t <reposityry_domain or host>/<name>-nextcloud:$IMAGE_VERSION ./nextcloud/custom-image
+docker login
+docker push <reposityry_domain or host>/<name>-nextcloud:$IMAGE_VERSION
+```
+
+
 Launch traefik stack.  
   
 ```bash
@@ -39,7 +57,7 @@ export STACK_NAME=<unique stack name>
 export NEXTCLOUD_INSTANCE_PATH=<path to route traefik on the right instance>
 export IMAGE_VERSION=<image version to build and use>
 
-docker build -t <name>-nextcloud:$IMAGE_VERSION ./nextcloud/custom-image
+# add flag --with-registry-auth if you use a private registry
 docker stack deploy -c ./nextcloud/docker-compose.yaml $STACK_NAME
 ```
   
