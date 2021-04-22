@@ -18,7 +18,7 @@ docker build -t <you name>-nextcloud:latest ./nextcloud/custom-image
 Launch traefik stack.  
   
 ```bash
-docker stack deploy -c trafik/docker-compose.yaml <your stack name>
+docker stack deploy -c traefik/docker-compose.yaml <your stack name>
 ```
 
 to deploy stacks complete deploy.sh.    
