@@ -2,7 +2,6 @@ http:
   routers:
     router_cbet_path:
       entryPoints: 
-        - web
         - websecure
       rule: Host("cbet.training01.continuous.team") && PathPrefix("/demo")
       service: servicecbet
@@ -12,7 +11,6 @@ http:
   
     routercbet:
       entryPoints: 
-        - web
         - websecure
       rule: Host("cbet.training01.continuous.team")
       service: servicecbet
@@ -20,7 +18,6 @@ http:
       
     routerrbet:
       entryPoints: 
-       - web
        - websecure
       rule: Host("rbet.training01.continuous.team")
       service: servicerbet
