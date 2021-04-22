@@ -1,13 +1,15 @@
 http:
   routers:
     routercbet:
-      entryPoints: web
+      entryPoints: 
+        - web
       rule: Host("cbet.training01.continuous.team")
       service: servicecbet
       priority: 2
       
     routerrbet:
-      entryPoints: web
+      entryPoints: 
+       - web
       rule: Host("rbet.training01.continuous.team")
       service: servicerbet
       priority: 2

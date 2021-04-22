@@ -18,6 +18,8 @@ services:
       - ./custom:/etc/traefik/custom:ro
       # ssl volumes to store acme.json
       - certs:/letsencrypt
+      # mount traefik logs
+      - ../app/tr.log:/var/log/tr.log
     networks:
       - web
 
