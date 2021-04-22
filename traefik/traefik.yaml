@@ -25,4 +25,5 @@ certificatesResolvers:
     acme:
       email: "christophe.garcia@continuous.team"
       storage: "/letsencrypt/acme.json"
-      tlsChallenge: {}
+      httpChallenge:
+        entryPoint: web
