@@ -2,7 +2,7 @@ version: '3.7'
 services:
 
   nextcloud:
-    image: elisabeth-nextcloud:${STACK}
+    image: elisabeth-nextcloud:${IMAGE_VERSION}
     environment:
       MYSQL_HOST: ${DB_HOST}
       MYSQL_DATABASE: ${DB_NAME}

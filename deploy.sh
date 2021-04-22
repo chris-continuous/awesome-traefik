@@ -10,8 +10,9 @@ export NEXTCLOUD_ADMIN_USER=admin
 export NEXTCLOUD_ADMIN_PASSWORD=mypassword 
 export STACK_NAME=nextcloud-$STACK
 export NEXTCLOUD_INSTANCE_PATH=nextcloud
+export IMAGE_VERSION=latest
 
-docker build -t elisabeth-nextcloud:$STACK ./nextcloud/custom-image
+docker build -t elisabeth-nextcloud:$IMAGE_VERSION ./nextcloud/custom-image
 docker stack deploy -c ./nextcloud/docker-compose.yaml $STACK_NAME
 
 export DB_HOST=10.10.1.28
@@ -24,6 +25,7 @@ export NEXTCLOUD_ADMIN_USER=admin
 export NEXTCLOUD_ADMIN_PASSWORD=mypassword 
 export STACK_NAME=nextcloud-$STACK
 export NEXTCLOUD_INSTANCE_PATH=nextcloud
+export IMAGE_VERSION=latest
 
-docker build -t elisabeth-nextcloud:$STACK ./nextcloud/custom-image
+docker build -t elisabeth-nextcloud:$IMAGE_VERSION ./nextcloud/custom-image
 docker stack deploy -c ./nextcloud/docker-compose.yaml $STACK_NAME
