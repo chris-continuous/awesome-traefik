@@ -16,6 +16,13 @@ Launch traefik stack.
 docker stack deploy -c traefik/docker-compose.yaml <your stack name>
 ```
 
+Copy deploy.sh.dist to deploy.sh.  
+execute :  
+
+```
+sudo chmod +x deploy.sh
+```
+
 to deploy stacks complete deploy.sh.    
 for each nextcloud you want to deploy duplicate this piece of code:  
 
