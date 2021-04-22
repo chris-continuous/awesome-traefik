@@ -1,8 +1,9 @@
 http:
 
   middlewares:
+  
     CbetMiddleware:
-      tripprefix:
+      stripprefix:
         prefixes:
           - "/demo"
         forceslash: false
