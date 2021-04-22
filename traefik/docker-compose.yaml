@@ -17,15 +17,9 @@ services:
       # custom folder with dynamic configuration
       - ./custom:/etc/traefik/custom:ro
       # ssl volumes to store acme.json
-      - certs:/letsencrypt
-      # mount traefik logs
-      - ../app/tr.log:/var/log/tr.log
+      - ../app/acme.json:/letsencrypt/acme.json
     networks:
       - web
-
-volumes:
-  certs:
-
 networks:
   web:
     name: traefik_web

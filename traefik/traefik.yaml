@@ -1,6 +1,11 @@
 entryPoints:
   web:
     address: :80
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
     
   websecure:
     address: :443
@@ -23,6 +28,6 @@ providers:
 certificatesResolvers:
   myresolver:
     acme:
-      email: "foo.bar@mydomain.com"
+      email: "christophe.garcia@continuous.team"
       storage: "/letsencrypt/acme.json"
       tlsChallenge: {}
